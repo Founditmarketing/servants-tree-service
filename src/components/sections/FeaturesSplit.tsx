@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { ShieldCheck, PhoneCall } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export default function FeaturesSplit() {
   return (
@@ -24,9 +25,9 @@ export default function FeaturesSplit() {
         <p className="text-muted-foreground text-lg leading-relaxed font-medium mb-10 max-w-md relative z-10">
           At our tree service, affordability is at the heart of our commitment to our customers. While we maintain the highest standards of quality and safety, we also understand the importance of cost-effective solutions. Experience exceptional tree care that fits your budget without compromising on the exceptional results we provide.
         </p>
-        <Button asChild variant="outline" className="rounded-xl border-primary/20 text-primary hover:bg-primary hover:text-white font-black uppercase tracking-widest px-10 py-6 text-base transition-all relative z-10">
-          <Link to="/about">Learn More</Link>
-        </Button>
+        <Link to="/about" className={cn(buttonVariants({ variant: "outline" }), "rounded-xl border-primary/20 text-primary hover:bg-primary hover:text-white font-black uppercase tracking-widest px-10 py-6 text-base transition-all relative z-10 text-center justify-center")}>
+          Learn More
+        </Link>
       </motion.div>
 
       {/* Column 2: 24 Hour Emergency Service */}
@@ -46,9 +47,9 @@ export default function FeaturesSplit() {
         <p className="text-white/80 text-lg leading-relaxed font-medium mb-10 max-w-md relative z-10">
           Our team is available around the clock, 24 hours a day, seven days a week, ready to respond swiftly to any tree-related emergencies that may arise. Whether it’s a fallen tree blocking your driveway, a hazardous limb threatening your home, or storm damage wreaking havoc on your property, we are here to provide immediate assistance.
         </p>
-        <Button asChild className="rounded-xl bg-accent text-white hover:bg-white hover:text-accent font-black uppercase tracking-widest px-10 py-6 text-base shadow-accent-glow border-none transition-all relative z-10">
-          <a href="tel:3186132388">Call Today</a>
-        </Button>
+        <a href="tel:3186132388" className={cn(buttonVariants(), "rounded-xl bg-accent text-white hover:bg-white hover:text-accent font-black uppercase tracking-widest px-10 py-6 text-base shadow-accent-glow border-none transition-all relative z-10 text-center justify-center")}>
+          Call Today
+        </a>
       </motion.div>
 
       {/* Arrow Down Divider */}

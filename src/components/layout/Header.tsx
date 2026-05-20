@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { Trees, Phone, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 type NavItem = {
   name: string;
@@ -33,6 +34,7 @@ const navigation: NavItem[] = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -43,11 +45,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
+        isScrolled ? "bg-slate-950/90 backdrop-blur-lg shadow-2xl py-3 border-b border-white/10" : "bg-transparent py-5"
       )}
     >
       <nav className="container mx-auto px-4 md:px-6 flex items-center justify-between">
@@ -55,10 +67,7 @@ export default function Header() {
           <div className="transition-transform hover:scale-110">
             <img src="/images/Logo.png" alt="Logo" className="h-10 md:h-12 w-auto object-contain" />
           </div>
-          <span className={cn(
-            "font-sans text-lg sm:text-xl xl:text-2xl font-black tracking-tighter transition-colors",
-            isScrolled ? "text-primary" : "text-white"
-          )}>
+          <span className="font-sans text-lg sm:text-xl xl:text-2xl font-black tracking-tighter transition-colors text-white">
             SERVANT'S <span className="text-secondary">TREE</span> CARE
           </span>
         </Link>
@@ -72,8 +81,8 @@ export default function Header() {
                 className={cn(
                   "transition-all hover:text-accent relative py-6 flex items-center",
                   location.pathname === item.href 
-                    ? (isScrolled ? "text-primary" : "text-white") + " after:absolute after:bottom-4 after:left-0 after:w-full after:h-0.5 after:bg-accent" 
-                    : (isScrolled ? "text-muted-foreground" : "text-white/80")
+                    ? "text-white after:absolute after:bottom-4 after:left-0 after:w-full after:h-0.5 after:bg-accent" 
+                    : "text-white/80"
                 )}
               >
                 {item.name}
@@ -96,58 +105,94 @@ export default function Header() {
         </div>
 
         <div className="hidden lg:block">
-          <Button asChild size="lg" className="rounded-xl px-4 xl:px-8 py-6 font-bold shadow-xl shadow-accent/20 bg-accent text-white hover:bg-accent/90 hover:scale-[1.02] active:scale-95 transition-all text-sm xl:text-base">
-            <a href="tel:3186132388" className="flex items-center">
-              <Phone className="w-4 h-4 mr-2" />
-              FREE ESTIMATE
-            </a>
-          </Button>
+          <Link to="/contact" className={cn(buttonVariants({ size: "lg" }), "rounded-xl px-4 xl:px-8 py-6 font-bold shadow-xl shadow-accent/20 bg-accent text-white hover:bg-accent/90 hover:scale-[1.02] active:scale-95 transition-all text-sm xl:text-base flex items-center")}>
+            <Phone className="w-4 h-4 mr-2" />
+            FREE ESTIMATE
+          </Link>
         </div>
 
         {/* Mobile Nav - Breakpoint moved to lg */}
         <div className="lg:hidden flex items-center gap-4">
-          <a href="tel:3186132388" className="p-2 bg-secondary rounded-full">
-            <Phone className="w-5 h-5 text-primary" />
+          <a href="tel:3186132388" className="p-2 bg-accent rounded-full hover:bg-accent/90 transition-colors">
+            <Phone className="w-5 h-5 text-white" />
           </a>
-          <Sheet>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger
               render={
-                <Button variant="ghost" size="icon" className={cn(isScrolled ? "text-foreground" : "text-white")} />
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10" />
               }
             >
               <Menu className="w-6 h-6" />
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background">
-              <div className="flex flex-col gap-6 mt-12">
-                {navigation.map((item) => (
-                  <div key={item.name} className="flex flex-col gap-2">
-                    <Link
-                      to={item.href}
-                      className={cn(
-                        "text-2xl font-serif font-medium hover:text-primary transition-colors",
-                        location.pathname === item.href ? "text-primary" : "text-foreground"
-                      )}
+            <SheetContent side="right" className="w-[90vw] sm:w-[400px] bg-slate-950 border-l border-white/10 p-0 flex flex-col h-full shadow-2xl">
+              <SheetHeader className="sr-only">
+                <SheetTitle>Navigation Menu</SheetTitle>
+              </SheetHeader>
+              <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
+              <div className="flex-1 overflow-y-auto nav-scrollbar px-6 py-4 relative z-10">
+                <div className="mb-4 text-left">
+                   <span className="font-sans text-xs sm:text-sm font-black tracking-widest text-white uppercase">
+                     SERVANT'S <span className="text-secondary">TREE</span> CARE
+                   </span>
+                </div>
+                <div className="flex flex-col gap-4 mt-2">
+                  {navigation.map((item, i) => (
+                    <motion.div 
+                      key={item.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      className="flex flex-col gap-2"
                     >
-                      {item.name}
-                    </Link>
-                    {item.subItems && (
-                      <div className="pl-4 flex flex-col gap-3 mt-2 border-l-2 border-primary/10">
-                        {item.subItems.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            to={subItem.href}
-                            className="text-lg font-serif text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-                <Button asChild size="lg" className="rounded-full mt-4">
-                  <Link to="/contact">Get A Free Estimate</Link>
-                </Button>
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={cn(
+                          "text-lg sm:text-xl font-sans font-black tracking-tight uppercase transition-colors hover:text-accent relative inline-flex w-max group",
+                          location.pathname === item.href ? "text-accent" : "text-white"
+                        )}
+                      >
+                        {item.name}
+                        {location.pathname === item.href && (
+                          <motion.div 
+                            layoutId="mobile-active"
+                            className="absolute -bottom-1 left-0 h-1 bg-accent rounded-full w-full"
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          />
+                        )}
+                        {location.pathname !== item.href && (
+                          <div className="absolute -bottom-1 left-0 h-1 bg-accent rounded-full w-0 group-hover:w-full transition-all duration-300" />
+                        )}
+                      </Link>
+                      {item.subItems && (
+                        <div className="pl-4 flex flex-col gap-2 mt-1 border-l-2 border-white/10">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <div className="p-4 sm:p-6 border-t border-white/10 bg-slate-950/80 backdrop-blur-md relative z-10">
+                <Link 
+                  to="/contact" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    buttonVariants({ size: "lg" }), 
+                    "w-full rounded-xl py-5 text-sm sm:text-base font-black uppercase tracking-[0.2em] bg-accent text-white hover:bg-accent/90 shadow-xl transition-all hover:scale-[1.02] active:scale-95"
+                  )}
+                >
+                  Get A Free Estimate
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

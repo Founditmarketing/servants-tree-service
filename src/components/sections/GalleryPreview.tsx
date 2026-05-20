@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Camera } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const previewImages = [
   "/images/Gallary/IMG_2142-400x284.jpg",
@@ -24,20 +25,20 @@ export default function GalleryPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12"
+          className="flex flex-row items-end justify-between gap-4 sm:gap-8 mb-12"
         >
-          <div>
-            <span className="text-accent font-black tracking-[0.5em] uppercase text-[10px] mb-4 block">
+          <div className="min-w-0 flex-1">
+            <span className="text-accent font-black tracking-[0.5em] uppercase text-[10px] mb-2 sm:mb-4 block">
               Project Showcase
             </span>
-            <h2 className="font-sans text-5xl md:text-6xl font-black tracking-tighter text-primary leading-[0.95]">
+            <h2 className="font-sans text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-primary leading-[0.95]">
               OUR <span className="text-secondary italic">WORK</span>
               <br />IN PICTURES.
             </h2>
           </div>
-          <div className="flex items-center gap-4 shrink-0">
-            <div className="w-12 h-[2px] bg-accent" />
-            <p className="text-muted-foreground font-medium max-w-xs leading-relaxed text-sm">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0 max-w-[45%] sm:max-w-xs">
+            <div className="hidden xs:block w-6 sm:w-12 h-[2px] bg-accent shrink-0" />
+            <p className="text-muted-foreground font-medium leading-relaxed text-[11px] sm:text-sm">
               A visual record of our technical precision and dedication to tree care across the region.
             </p>
           </div>
@@ -62,7 +63,7 @@ export default function GalleryPreview() {
                 visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
               }}
               className={`relative group overflow-hidden rounded-2xl bg-slate-100 shadow-sm ${
-                i === 0 ? "md:col-span-2 md:row-span-2 h-[260px] md:h-auto" : "h-[160px] md:h-[200px]"
+                i === 0 ? "md:col-span-2 md:row-span-2 h-[160px] sm:h-[220px] md:h-auto" : "h-[160px] sm:h-[220px] md:h-[200px]"
               }`}
             >
               <img
@@ -86,16 +87,10 @@ export default function GalleryPreview() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 flex justify-center"
         >
-          <Button
-            asChild
-            size="lg"
-            className="rounded-xl px-12 py-7 text-base font-black uppercase tracking-widest bg-primary text-white hover:bg-accent transition-all shadow-xl"
-          >
-            <Link to="/gallery" className="flex items-center gap-3">
-              View Full Gallery
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </Button>
+          <Link to="/gallery" className={cn(buttonVariants({ size: "lg" }), "rounded-xl px-12 py-7 text-base font-black uppercase tracking-widest bg-primary text-white hover:bg-accent transition-all shadow-xl flex items-center gap-3")}>
+            View Full Gallery
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </motion.div>
       </div>
     </section>

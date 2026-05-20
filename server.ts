@@ -14,6 +14,7 @@ const ContactSchema = z.object({
   email: z.string().email('Invalid email address'),
   phone: z.string().min(10, 'Phone number is required'),
   service: z.string().min(1, 'Service selection is required'),
+  address: z.string().min(5, 'Address must be at least 5 characters'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
   honeypot: z.string().optional(),
 });
@@ -50,6 +51,7 @@ async function startServer() {
           <p><strong>Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Phone:</strong> ${data.phone}</p>
+          <p><strong>Address:</strong> ${data.address}</p>
           <p><strong>Service Needed:</strong> ${data.service}</p>
           <p><strong>Message:</strong></p>
           <p>${data.message}</p>

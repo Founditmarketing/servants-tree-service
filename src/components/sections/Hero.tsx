@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Phone, ArrowRight, TreeDeciduous, Scissors } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
@@ -69,7 +70,7 @@ export default function Hero() {
               }}
               className="text-lg md:text-2xl text-white/80 mb-12 max-w-xl leading-relaxed font-medium border-l-4 border-accent pl-6"
             >
-              Elite arboricultural management for those who view their landscape as an investment in legacy.
+              Serving North & Central Louisiana
             </motion.p>
             
             <motion.div 
@@ -79,15 +80,13 @@ export default function Hero() {
               }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-6"
             >
-              <Button asChild size="lg" className="rounded-xl px-12 py-8 text-xl font-bold bg-accent text-white hover:bg-accent/90 shadow-xl transition-all">
-                <Link to="/contact">Start Your Review</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-xl px-10 py-8 text-xl font-bold text-white border-white/20 hover:bg-white/10 transition-all backdrop-blur-sm">
-                <a href="#services" className="flex items-center">
-                  Our Services
-                  <ArrowRight className="ml-3 w-6 h-6" />
-                </a>
-              </Button>
+              <Link to="/contact" className={cn(buttonVariants({ size: "lg" }), "rounded-xl px-12 py-8 text-xl font-bold bg-accent text-white hover:bg-accent/90 shadow-xl transition-all text-center justify-center")}>
+                Contact Us
+              </Link>
+              <a href="#services" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "rounded-xl px-10 py-8 text-xl font-bold text-white border-white/20 hover:bg-white/10 transition-all backdrop-blur-sm text-center justify-center flex items-center")}>
+                Our Services
+                <ArrowRight className="ml-3 w-6 h-6" />
+              </a>
             </motion.div>
           </motion.div>
         </div>
