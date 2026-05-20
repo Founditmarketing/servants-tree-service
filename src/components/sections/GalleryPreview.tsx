@@ -53,7 +53,7 @@ export default function GalleryPreview() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.08 } },
           }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4"
+          className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-fr"
         >
           {previewImages.map((url, i) => (
             <motion.div
@@ -62,9 +62,7 @@ export default function GalleryPreview() {
                 hidden: { opacity: 0, scale: 0.95, y: 20 },
                 visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
               }}
-              className={`relative group overflow-hidden rounded-2xl bg-slate-100 shadow-sm ${
-                i === 0 ? "md:col-span-2 md:row-span-2 h-[160px] sm:h-[220px] md:h-auto" : "h-[160px] sm:h-[220px] md:h-[200px]"
-              }`}
+              className={`relative group overflow-hidden rounded-2xl bg-slate-100 shadow-sm ${i === 0 ? "md:col-span-2 md:row-span-2 aspect-[4/3]" : "h-full"}`} 
             >
               <img
                 src={url}
