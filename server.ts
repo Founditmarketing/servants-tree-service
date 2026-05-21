@@ -10,7 +10,7 @@ dotenv.config();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const ContactSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
+  fullName: z.string().min(2, 'Name is required'),
   email: z.string().email('Invalid email address'),
   phone: z.string().min(10, 'Phone number is required'),
   service: z.string().min(1, 'Service selection is required'),
@@ -42,13 +42,14 @@ async function startServer() {
          return res.json({ success: true, message: 'Dev mode: Data logged successfully' });
       }
 
+      const recipientEmail = process.env.EMAIL || 'isaiah@founditmarketing.com';
       await resend.emails.send({
-        from: 'Servants Tree Service <onboarding@resend.dev>',
-        to: ['isaiah@founditmarketing.com'], // Change to client email in production
-        subject: `New Request from ${data.name} - ${data.service}`,
+        from: "Servant's Tree Services <onboarding@resend.dev>",
+        to: [recipientEmail],
+        subject: `New Request from ${data.fullName} - ${data.service}`,
         html: `
           <h1>New Lead from Website</h1>
-          <p><strong>Name:</strong> ${data.name}</p>
+          <p><strong>Name:</strong> ${data.fullName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Phone:</strong> ${data.phone}</p>
           <p><strong>Address:</strong> ${data.address}</p>
