@@ -1,6 +1,5 @@
-import { motion } from "motion/react";
 import { ShieldCheck, Clock, Award, HeartHandshake } from "lucide-react";
-import { ScrollReveal, ParallaxLayer, TextRevealByWord } from "@/components/ui/ScrollReveal";
+import { ScrollReveal, TextRevealByWord } from "@/components/ui/ScrollReveal";
 
 const reasons = [
   {
@@ -28,18 +27,7 @@ const reasons = [
 export default function WhyChooseUs() {
   return (
     <section className="py-24 bg-white relative overflow-hidden bg-noise">
-      {/* Decorative Stamp (Eye Candy) - Parallax depth */}
-      <ParallaxLayer speed={0.4} className="absolute top-4 left-4 md:-top-12 md:-left-12 z-20 pointer-events-none select-none">
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="w-32 h-32 md:w-48 md:h-48 border-2 border-primary/10 rounded-full flex items-center justify-center opacity-40"
-        >
-          <div className="text-[8px] md:text-[10px] font-black text-primary uppercase tracking-[0.3em] text-center p-4 md:p-8">
-            Natchitoches Louisiana • Integrity and expertise • Quality Service • 
-          </div>
-        </motion.div>
-      </ParallaxLayer>
+
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Horizontal Intro Section */}
