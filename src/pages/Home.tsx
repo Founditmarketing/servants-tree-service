@@ -9,15 +9,11 @@ import ContactSection from "@/components/sections/ContactSection";
 export default function Home() {
   return (
     <>
-      {/* Fixed hero behind everything */}
+      {/* Hero: sticky inside 200vh wrapper (z-0) — scrolls away after doors cover it */}
       <Hero />
 
-      {/* All scrollable content — sits above the hero */}
+      {/* All content renders above the hero (z-10) */}
       <div className="relative z-10">
-        {/* Spacer: lets the hero be visible for one full screen before doors close */}
-        <div className="h-screen" />
-
-        {/* Doors close over hero, then rest of page scrolls normally */}
         <FeaturesSplit />
         <WhyChooseUs />
         <GalleryPreview />
