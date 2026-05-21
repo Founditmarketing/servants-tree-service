@@ -239,7 +239,7 @@ export function HorizontalScroll({
     <div
       ref={containerRef}
       className={cn("relative", className)}
-      style={{ height: `${(scrollWidth / window.innerWidth) * 100 * speed + 100}vh` }}
+      style={{ height: `${Math.max((scrollWidth / window.innerWidth) * 100 * speed, 100)}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden flex items-center">
         <motion.div
