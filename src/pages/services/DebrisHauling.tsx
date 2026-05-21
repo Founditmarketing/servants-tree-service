@@ -27,7 +27,7 @@ export default function DebrisHauling() {
                             <span className="w-12 h-[2px] bg-accent"></span>
                             <span className="text-white">Site Restoration & Cleanup</span>
                         </div>
-                        <h1 className="font-sans text-5xl sm:text-7xl lg:text-8xl font-black mt-6 mb-8 tracking-tighter text-primary uppercase">DEBRIS <br /><span className="text-secondary italic">HAULING</span></h1>
+                        <h1 className="font-sans text-5xl sm:text-7xl lg:text-8xl font-black mt-6 mb-8 tracking-tighter text-white uppercase">DEBRIS <br /><span className="text-accent italic">HAULING</span></h1>
                         <p className="text-white/64 text-lg max-w-xl leading-relaxed font-medium">
                             Serving North & Central Louisiana
                         </p>

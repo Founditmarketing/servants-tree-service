@@ -25,7 +25,7 @@ export default function Pruning() {
                             <span className="w-12 h-[2px] bg-accent"></span>
                             <span className="text-white">Long-Term Health & Preservation</span>
                         </div>
-                        <h1 className="font-sans text-5xl sm:text-7xl lg:text-8xl font-black mt-6 mb-8 tracking-tighter text-primary uppercase">STRUCTURAL <br /><span className="text-secondary italic">PRUNING</span></h1>
+                        <h1 className="font-sans text-5xl sm:text-7xl lg:text-8xl font-black mt-6 mb-8 tracking-tighter text-white uppercase">STRUCTURAL <br /><span className="text-accent italic">PRUNING</span></h1>
                         <p className="text-white/64 text-lg max-w-xl leading-relaxed font-medium">
                             Serving North & Central Louisiana
                         </p>
