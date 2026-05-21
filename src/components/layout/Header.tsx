@@ -32,6 +32,47 @@ const navigation: NavItem[] = [
     { name: "Contact Us", href: "/contact" },
 ];
 
+function AvailabilityBadge({ compact = false }: { compact?: boolean }) {
+    const [isAvailable, setIsAvailable] = useState(false);
+
+    useEffect(() => {
+        const check = () => {
+            // Central Time (America/Chicago)
+            const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Chicago" }));
+            const day = now.getDay(); // 0=Sun, 6=Sat
+            const hour = now.getHours();
+            // Mon-Sat (1-6), 7AM-6PM
+            setIsAvailable(day >= 1 && day <= 6 && hour >= 7 && hour < 18);
+        };
+        check();
+        const interval = setInterval(check, 60000);
+        return () => clearInterval(interval);
+    }, []);
+
+    if (compact) {
+        return (
+            <div className="flex items-center gap-1.5" title={isAvailable ? "Available Now" : "After Hours"}>
+                <span className="relative flex h-2.5 w-2.5">
+                    {isAvailable && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />}
+                    <span className={cn("relative inline-flex rounded-full h-2.5 w-2.5", isAvailable ? "bg-green-500" : "bg-red-400")} />
+                </span>
+            </div>
+        );
+    }
+
+    return (
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+                {isAvailable && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />}
+                <span className={cn("relative inline-flex rounded-full h-2 w-2", isAvailable ? "bg-green-500" : "bg-red-400")} />
+            </span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/70">
+                {isAvailable ? "Available Now" : "After Hours"}
+            </span>
+        </div>
+    );
+}
+
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -104,7 +145,8 @@ export default function Header() {
                     ))}
                 </div>
 
-                <div className="hidden xl:block shrink-0">
+                <div className="hidden xl:flex items-center gap-3 shrink-0">
+                    <AvailabilityBadge />
                     <Link to="/contact" className={cn(buttonVariants({ size: "default" }), "rounded-xl px-5 2xl:px-7 py-5 font-bold shadow-xl shadow-accent/20 bg-accent text-white hover:bg-accent/90 hover:scale-[1.02] active:scale-95 transition-all text-xs 2xl:text-sm flex items-center")}>
                         <Phone className="w-3.5 h-3.5 mr-1.5" />
                         FREE ESTIMATE
@@ -113,6 +155,7 @@ export default function Header() {
 
                 {/* Mobile Nav */}
                 <div className="xl:hidden flex items-center gap-3">
+                    <AvailabilityBadge compact />
                     <a href="tel:3186132388" className="p-2 bg-accent rounded-full hover:bg-accent/90 transition-colors">
                         <Phone className="w-5 h-5 text-white" />
                     </a>
