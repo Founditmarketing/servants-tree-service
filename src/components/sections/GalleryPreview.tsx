@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Camera } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const previewImages = [
@@ -31,13 +31,13 @@ export default function GalleryPreview() {
             <span className="text-accent font-black tracking-[0.5em] uppercase text-[10px] mb-2 sm:mb-4 block">
               Project Showcase
             </span>
-            <h2 className="font-sans text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-primary leading-[0.95]">
+            <h2 className="font-sans text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-primary leading-[0.95]">
               OUR <span className="text-secondary italic">WORK</span>
               <br />IN PICTURES.
             </h2>
           </div>
           <div className="flex items-center gap-2 sm:gap-4 shrink-0 max-w-[45%] sm:max-w-xs">
-            <div className="hidden xs:block w-6 sm:w-12 h-[2px] bg-accent shrink-0" />
+            <div className="hidden sm:block w-6 sm:w-12 h-[2px] bg-accent shrink-0" />
             <p className="text-muted-foreground font-medium leading-relaxed text-[11px] sm:text-sm">
               A visual record of our technical precision and dedication to tree care across the region.
             </p>

@@ -59,27 +59,27 @@ export default function Header() {
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled ? "bg-slate-950/90 backdrop-blur-lg shadow-2xl py-3 border-b border-white/10" : "bg-transparent py-5"
+                isScrolled ? "bg-slate-950/90 backdrop-blur-lg shadow-2xl py-2 border-b border-white/10" : "bg-transparent py-4"
             )}
         >
             <nav className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-                <Link to="/" className="flex items-center gap-2 group">
+                <Link to="/" className="flex items-center gap-2 group shrink-0">
                     <div className="transition-transform hover:scale-110">
-                        <img src="/images/Logo.png" alt="Logo" className="h-10 md:h-12 w-auto object-contain" />
+                        <img src="/images/Logo.png" alt="Logo" className="h-9 md:h-10 xl:h-12 w-auto object-contain" />
                     </div>
-                    <span className="font-sans text-lg sm:text-xl xl:text-2xl font-black tracking-tighter transition-colors text-white">
+                    <span className="font-sans text-base sm:text-lg xl:text-xl font-black tracking-tighter transition-colors text-white">
                         SERVANT'S <span className="text-secondary">TREE</span> SERVICE
                     </span>
                 </Link>
 
-                {/* Desktop Nav - Breakpoint moved to lg and spacing refined */}
-                <div className="hidden lg:flex items-center space-x-4 xl:space-x-10 text-[10px] xl:text-xs font-bold uppercase tracking-[0.15em]">
+                {/* Desktop Nav */}
+                <div className="hidden xl:flex items-center space-x-6 2xl:space-x-8 text-[10px] 2xl:text-xs font-bold uppercase tracking-[0.12em]">
                     {navigation.map((item) => (
                         <div key={item.name} className="relative group">
                             <Link
                                 to={item.href}
                                 className={cn(
-                                    "transition-all hover:text-accent relative py-6 flex items-center",
+                                    "transition-all hover:text-accent relative py-4 flex items-center whitespace-nowrap",
                                     location.pathname === item.href
                                         ? "text-white after:absolute after:bottom-4 after:left-0 after:w-full after:h-0.5 after:bg-accent"
                                         : "text-white/80"
@@ -104,15 +104,15 @@ export default function Header() {
                     ))}
                 </div>
 
-                <div className="hidden lg:block">
-                    <Link to="/contact" className={cn(buttonVariants({ size: "lg" }), "rounded-xl px-4 xl:px-8 py-6 font-bold shadow-xl shadow-accent/20 bg-accent text-white hover:bg-accent/90 hover:scale-[1.02] active:scale-95 transition-all text-sm xl:text-base flex items-center")}>
-                        <Phone className="w-4 h-4 mr-2" />
+                <div className="hidden xl:block shrink-0">
+                    <Link to="/contact" className={cn(buttonVariants({ size: "default" }), "rounded-xl px-5 2xl:px-7 py-5 font-bold shadow-xl shadow-accent/20 bg-accent text-white hover:bg-accent/90 hover:scale-[1.02] active:scale-95 transition-all text-xs 2xl:text-sm flex items-center")}>
+                        <Phone className="w-3.5 h-3.5 mr-1.5" />
                         FREE ESTIMATE
                     </Link>
                 </div>
 
-                {/* Mobile Nav - Breakpoint moved to lg */}
-                <div className="lg:hidden flex items-center gap-4">
+                {/* Mobile Nav */}
+                <div className="xl:hidden flex items-center gap-3">
                     <a href="tel:3186132388" className="p-2 bg-accent rounded-full hover:bg-accent/90 transition-colors">
                         <Phone className="w-5 h-5 text-white" />
                     </a>

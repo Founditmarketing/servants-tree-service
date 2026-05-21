@@ -86,6 +86,15 @@ export default function Footer() {
                         </div>
                     </div>
 
+                    {/* Copyright Bar */}
+                    <div className="border-t border-white/10 pt-10 mt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-white/40 text-sm font-medium">
+                            &copy; {currentYear} Servant's Tree Service. All rights reserved.
+                        </p>
+                        <p className="text-white/30 text-xs font-medium">
+                            Serving North &amp; Central Louisiana
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>

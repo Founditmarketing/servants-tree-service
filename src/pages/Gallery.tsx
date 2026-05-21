@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Camera, Image as ImageIcon, ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ZoomIn, ChevronLeft, ChevronRight, X } from "lucide-react";
 import ContactSection from "@/components/sections/ContactSection";
 
 const galleryImages = [
@@ -119,7 +118,7 @@ export default function Gallery() {
                                     y: -5,
                                     transition: { duration: 0.3 }
                                 }}
-                                className="group relative h-[400px] rounded-2xl overflow-hidden shadow-heavy bg-muted perspective-1000 cursor-pointer"
+                                className="group relative h-[250px] md:h-[400px] rounded-2xl overflow-hidden shadow-heavy bg-muted perspective-1000 cursor-pointer"
                             >
                                 <img
                                     src={image.url}

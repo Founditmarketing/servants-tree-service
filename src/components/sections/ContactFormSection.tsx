@@ -97,7 +97,7 @@ export default function ContactForm({ className }: { className?: string }) {
                     <h3 className="font-serif text-3xl font-bold">Send A Message</h3>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="p-8 space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="p-4 sm:p-8 space-y-6">
                     <input type="text" {...register("honeypot")} className="hidden" tabIndex={-1} autoComplete="off" />
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -184,7 +184,7 @@ export default function ContactForm({ className }: { className?: string }) {
                     <Button
                         type="submit"
                         disabled={status === "loading"}
-                        className="w-full rounded-xl py-6 py-6 group"
+                        className="w-full rounded-xl py-6 group"
                     >
                         {status === "loading" ? (
                             <Loader2 className="w-5 h-5 animate-spin" />

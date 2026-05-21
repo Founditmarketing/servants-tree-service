@@ -104,7 +104,7 @@ export default function FullServicesList() {
 
                 {/* Large Typographic Watermark */}
                 <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[25vw] font-black text-white/[0.01] uppercase tracking-[-0.08em] whitespace-nowrap select-none pointer-events-none italic">
-                    ArborCare
+                    Servants
                 </div>
             </div>
 
@@ -147,7 +147,7 @@ export default function FullServicesList() {
                                     transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
                                 }
                             }}
-                            className="group relative p-12 bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded-[3rem] hover:bg-white/[0.04] hover:border-accent/30 transition-all duration-700 overflow-hidden cursor-pointer"
+                            className="group relative p-6 md:p-12 bg-white/[0.02] backdrop-blur-2xl border border-white/5 rounded-[3rem] hover:bg-white/[0.04] hover:border-accent/30 transition-all duration-700 overflow-hidden cursor-pointer"
                         >
                             {/* Interactive Luminous Flare */}
                             <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />

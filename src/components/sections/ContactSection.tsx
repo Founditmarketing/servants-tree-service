@@ -50,7 +50,7 @@ export default function ContactSection() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-30">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           
           {/* Left Details Column */}
           <div className="space-y-12 lg:pt-10">
@@ -61,7 +61,7 @@ export default function ContactSection() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-4 items-start">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
                   <Phone className="w-6 h-6" />
                 </div>

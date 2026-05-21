@@ -1,7 +1,4 @@
 import { motion } from "motion/react";
-import { Construction, Map, CheckCircle2, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import ContactSection from "@/components/sections/ContactSection";
 
 export default function LandClearing() {
@@ -11,7 +8,7 @@ export default function LandClearing() {
             <section className="py-32 bg-white relative overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-black/60 z-10" />
-                    <img src="/images/IMG_3495-scaled.jpg" alt="About Hero Background" className="w-full h-full object-cover" />
+                    <img src="/images/IMG_3495-scaled.jpg" alt="Land Clearing Services" className="w-full h-full object-cover" />
                 </div>
                 {/* Dual Color Edge */}
                 {/* Dual Color Edge - Adjusted for Responsiveness */}
@@ -41,7 +38,7 @@ export default function LandClearing() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
-                            <h2 className="text-4xl font-black tracking-tight text-primary uppercase">Your Land, Your vision </h2>
+                            <h2 className="text-4xl font-black tracking-tight text-primary uppercase">Your Land, Your Vision</h2>
                             <p className="text-muted-foreground text-lg leading-relaxed font-medium">
                                 At Servants Tree Services, our land clearing services provide a seamless solution for transforming your property into a blank canvas, ready for your next project. Every land clearing project is unique. We work closely with you to understand your specific goals and tailor our approach to meet your requirements.
                             </p>
@@ -51,7 +48,7 @@ export default function LandClearing() {
                         </div>
 
 
-                        <div className="bg-primary/5 p-42 rounded-2xl border border-primary/10 shadow-2xl relative overflow-hidden">
+                        <div className="bg-primary/5 aspect-[4/3] rounded-2xl border border-primary/10 shadow-2xl relative overflow-hidden">
                             <div className="absolute inset-0 z-0">
                                 <img src="/images/Gallary/IMG_3107-400x284.jpg" className="w-full h-full object-cover object-[position:0%_98%]" />
                             </div>

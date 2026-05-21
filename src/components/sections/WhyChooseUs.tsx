@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ShieldCheck, Clock, Award, HeartHandshake, Quote } from "lucide-react";
+import { ShieldCheck, Clock, Award, HeartHandshake } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const reasons = [

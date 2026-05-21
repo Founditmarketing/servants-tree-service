@@ -1,7 +1,4 @@
 import { motion } from "motion/react";
-import { Wind, Scissors, CheckCircle2, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import ContactSection from "@/components/sections/ContactSection";
 
 export default function TreeTrimming() {
@@ -11,7 +8,7 @@ export default function TreeTrimming() {
             <section className="py-32 bg-white relative overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-black/60 z-10" />
-                    <img src="/images/IMG_2267-scaled.jpg" alt="About Hero Background" className="w-full h-full object-cover" />
+                    <img src="/images/IMG_2267-scaled.jpg" alt="Tree Trimming Services" className="w-full h-full object-cover" />
                 </div>
                 {/* Dual Color Edge */}
                 {/* Dual Color Edge - Adjusted for Responsiveness */}
@@ -51,7 +48,7 @@ export default function TreeTrimming() {
                             </p>
                         </div>
 
-                        <div className="bg-primary/5 p-42 rounded-2xl border border-primary/10 shadow-2xl relative overflow-hidden">
+                        <div className="bg-primary/5 aspect-[4/3] rounded-2xl border border-primary/10 shadow-2xl relative overflow-hidden">
                             <div className="absolute inset-0 z-0">
                                 <img src="/images/Gallary/IMG_2211-400x284.jpg" className="w-full h-full object-cover" />
                             </div>

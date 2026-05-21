@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ShieldCheck, PhoneCall } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +36,7 @@ export default function FeaturesSplit() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="w-full md:w-1/2 bg-primary pt-24 pb-48 px-6 md:px-12 lg:px-24 flex flex-col items-center text-center text-white group relative z-10"
+        className="w-full md:w-1/2 bg-primary pt-24 pb-40 md:pb-48 px-6 md:px-12 lg:px-24 flex flex-col items-center text-center text-white group relative z-10"
       >
         <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
         <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mb-6 group-hover:bg-accent transition-colors shadow-lg relative z-10">

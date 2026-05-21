@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import ContactFormSection from "@/components/sections/ContactFormSection";
-import { Phone, Mail, MapPin, Clock, MessageSquare } from "lucide-react";
+import { Phone, Mail, Clock } from "lucide-react";
 
 export default function Contact() {
     return (
@@ -78,13 +78,13 @@ export default function Contact() {
                                             <div>
                                                 <p className="text-[10px] uppercase font-black tracking-widest text-white/50 mb-1">Operation Hours</p>
                                                 <div className="text-base font-bold text-white/80 tracking-tight space-y-1 mt-2">
-                                                    <p className="flex justify-between w-48"><span>Mon:</span> <span>8am – 5pm</span></p>
-                                                    <p className="flex justify-between w-48"><span>Tue:</span> <span>8am – 5pm</span></p>
-                                                    <p className="flex justify-between w-48"><span>Wed:</span> <span>8am – 5pm</span></p>
-                                                    <p className="flex justify-between w-48"><span>Thur:</span> <span>8am – 5pm</span></p>
-                                                    <p className="flex justify-between w-48"><span>Fri:</span> <span>8am – 5pm</span></p>
-                                                    <p className="flex justify-between w-48 text-white/40"><span>Sat:</span> <span>Closed</span></p>
-                                                    <p className="flex justify-between w-48 text-white/40"><span>Sun:</span> <span>Closed</span></p>
+                                                    <p className="flex justify-between w-40"><span>Mon:</span> <span>8am – 5pm</span></p>
+                                                    <p className="flex justify-between w-40"><span>Tue:</span> <span>8am – 5pm</span></p>
+                                                    <p className="flex justify-between w-40"><span>Wed:</span> <span>8am – 5pm</span></p>
+                                                    <p className="flex justify-between w-40"><span>Thur:</span> <span>8am – 5pm</span></p>
+                                                    <p className="flex justify-between w-40"><span>Fri:</span> <span>8am – 5pm</span></p>
+                                                    <p className="flex justify-between w-40 text-white/40"><span>Sat:</span> <span>Closed</span></p>
+                                                    <p className="flex justify-between w-40 text-white/40"><span>Sun:</span> <span>Closed</span></p>
                                                 </div>
                                             </div>
                                         </div>

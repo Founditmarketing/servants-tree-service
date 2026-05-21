@@ -6,7 +6,7 @@ export default function About() {
     return (
         <main className="relative overflow-hidden bg-white selection:bg-primary selection:text-white">
             {/* Global Noise Texture Overlay */}
-            <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\x220 0 200 200\x22 xmlns=\x22http://www.w3.org/2000/svg\x22%3E%3Cfilter id=\x22noiseFilter\x22%3E%3CfeTurbulence type=\x22fractalNoise\x22 baseFrequency=\x220.65\x22 numOctaves=\x223\x22 stitchTiles=\x22stitch\x22/%3E%3C/filter%3E%3Crect width=\x22100%25\x22 height=\x22100%25\x22 filter=\x22url(%23noiseFilter)\x22/%3E%3C/svg%3E')" }} />
+            <div className="fixed inset-0 pointer-events-none z-[5] opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\x220 0 200 200\x22 xmlns=\x22http://www.w3.org/2000/svg\x22%3E%3Cfilter id=\x22noiseFilter\x22%3E%3CfeTurbulence type=\x22fractalNoise\x22 baseFrequency=\x220.65\x22 numOctaves=\x223\x22 stitchTiles=\x22stitch\x22/%3E%3C/filter%3E%3Crect width=\x22100%25\x22 height=\x22100%25\x22 filter=\x22url(%23noiseFilter)\x22/%3E%3C/svg%3E')" }} />
 
             {/* Hero Section */}
             <section className="relative py-32 overflow-hidden bg-black">
@@ -85,7 +85,8 @@ export default function About() {
                     style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
                 {/* Left Column: Video */}
-                <div className="w-3/4 mb-8 mx-auto overflow-hidden border-2 border-[var(--color-secondary)] rounded-[5px]">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="w-full lg:w-3/4 mb-8 mx-auto overflow-hidden border-2 border-[var(--color-secondary)] rounded-[5px]">
                     <div className="relative aspect-video w-full bg-muted shadow-lg">
                         <video
                             src="/videos/servants-tree-service-commercial.mp4"
@@ -97,6 +98,7 @@ export default function About() {
                             className="h-full w-full object-cover"
                         />
                     </div>
+                </div>
                 </div>
 
                 <div className="container mx-auto px-4 md:px-6 relative z-10">
