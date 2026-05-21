@@ -13,7 +13,7 @@ const previewImages = [
 
 export default function GalleryPreview() {
   return (
-    <section className="bg-white relative overflow-hidden">
+    <section className="bg-white relative" style={{ overflowX: "clip" }}>
       <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
 
       {/* Header — sits above the horizontal scroll area */}
