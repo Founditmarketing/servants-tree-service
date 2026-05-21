@@ -3,11 +3,11 @@
 
 html, body {
   scroll-behavior: smooth;
-  cursor: url('/cursors/chainsaw.svg') 30 17, auto;
+  cursor: url('/cursors/chainsaw.svg') 16 16, auto;
 }
 
 a, button, [role="button"], input, select, textarea, label {
-  cursor: url('/cursors/chainsaw.svg') 30 17, pointer;
+  cursor: url('/cursors/chainsaw.svg') 16 16, pointer;
 }
 
 /* Smooth will-change hints for scroll-driven animations */
