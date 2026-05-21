@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { ShieldCheck, Clock, Award, HeartHandshake } from "lucide-react";
 import { ScrollReveal, TextRevealByWord } from "@/components/ui/ScrollReveal";
 

@@ -1,13 +1,27 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion, useScroll, useTransform } from "motion/react";
 
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  // Hero slides up and fades out as user scrolls past
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const opacity = useTransform(scrollYProgress, [0.6, 1], [1, 0]);
+
   return (
-    // 500vh runway — hero stays pinned through doors closing + 2 more sections
-    <div className="relative z-0 h-[500vh]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+    <section ref={ref} className="relative h-screen">
+      <motion.div
+        style={{ y, opacity }}
+        className="fixed inset-0 z-0 will-change-transform"
+      >
         {/* Full Screen Video Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/40 z-10" />
@@ -62,7 +76,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 }

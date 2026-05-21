@@ -8,14 +8,9 @@ import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <>
-      {/* Hero: sticky in 500vh wrapper, z-0 */}
+    <div>
       <Hero />
-
-      {/* Content layer: z-10 renders above hero.
-          -mt-[300vh] pulls it up so doors close while hero is still visible,
-          and hero stays frozen behind ~2 more sections before scrolling away. */}
-      <div className="relative z-10" style={{ marginTop: "-300vh" }}>
+      <div className="relative z-10">
         <FeaturesSplit />
         <WhyChooseUs />
         <GalleryPreview />
@@ -23,6 +18,6 @@ export default function Home() {
         <TestimonialsCarousel />
         <ContactSection />
       </div>
-    </>
+    </div>
   );
 }
