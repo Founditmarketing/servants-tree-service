@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    <section className="relative h-[150vh]">
-      {/* Sticky fullscreen hero — stays pinned while doors close over it */}
-      <div className="sticky top-0 h-screen overflow-hidden z-0">
+    <>
+      {/* Fixed hero — never moves, stays behind everything */}
+      <div className="fixed inset-0 z-0">
         {/* Full Screen Video Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/40 z-10" />
@@ -63,6 +63,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+
+      {/* Spacer to account for the fixed hero */}
+      <div className="h-screen" />
+    </>
   );
 }

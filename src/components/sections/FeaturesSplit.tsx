@@ -11,13 +11,13 @@ export default function FeaturesSplit() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "start start"],
+    offset: ["start end", "start 0.2"],
   });
 
   // Left door: slides in from left (-100% → 0%)
-  const leftX = useTransform(scrollYProgress, [0, 0.8], ["-100%", "0%"]);
+  const leftX = useTransform(scrollYProgress, [0, 1], ["-100%", "0%"]);
   // Right door: slides in from right (100% → 0%)
-  const rightX = useTransform(scrollYProgress, [0, 0.8], ["100%", "0%"]);
+  const rightX = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
 
   return (
     <section ref={containerRef} className="relative z-10">
