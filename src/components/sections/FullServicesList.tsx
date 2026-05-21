@@ -101,46 +101,49 @@ export default function FullServicesList() {
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="text-center md:text-left mb-24">
-                    <h2 className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black mt-4 tracking-tighter text-white uppercase leading-[0.85]">
-                      {/* TECHNICAL — letter by letter from below */}
-                      <span className="block overflow-hidden">
+                    <motion.h2
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.3 }}
+                      className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black mt-4 tracking-tighter text-white uppercase leading-[0.85]"
+                    >
+                      {/* TECHNICAL */}
+                      <motion.span
+                        className="block overflow-hidden"
+                        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04 } } }}
+                      >
                         {"TECHNICAL".split("").map((letter, i) => (
                           <motion.span
                             key={`t-${i}`}
-                            initial={{ y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" }}
-                            whileInView={{ y: "0%", opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            viewport={{ once: true, amount: 0.8, margin: "-200px" }}
-                            transition={{
-                              delay: i * 0.04,
-                              duration: 0.7,
-                              ease: [0.16, 1, 0.3, 1],
+                            variants={{
+                              hidden: { y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" },
+                              visible: { y: "0%", opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
                             }}
                             className="inline-block"
                           >
                             {letter}
                           </motion.span>
                         ))}
-                      </span>
-                      {/* EXCELLENCE — same animation, stagger offset, accent color */}
-                      <span className="block overflow-hidden">
+                      </motion.span>
+                      {/* EXCELLENCE */}
+                      <motion.span
+                        className="block overflow-hidden"
+                        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.35 } } }}
+                      >
                         {"EXCELLENCE".split("").map((letter, i) => (
                           <motion.span
                             key={`e-${i}`}
-                            initial={{ y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" }}
-                            whileInView={{ y: "0%", opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            viewport={{ once: true, amount: 0.8, margin: "-200px" }}
-                            transition={{
-                              delay: 0.35 + i * 0.04,
-                              duration: 0.7,
-                              ease: [0.16, 1, 0.3, 1],
+                            variants={{
+                              hidden: { y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" },
+                              visible: { y: "0%", opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
                             }}
                             className="inline-block text-accent italic"
                           >
                             {letter}
                           </motion.span>
                         ))}
-                      </span>
-                    </h2>
+                      </motion.span>
+                    </motion.h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
