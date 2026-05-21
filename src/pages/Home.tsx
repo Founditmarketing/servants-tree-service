@@ -15,7 +15,7 @@ export default function Home() {
       {/* Content layer: z-10 renders above hero.
           -mt-[300vh] pulls it up so doors close while hero is still visible,
           and hero stays frozen behind ~2 more sections before scrolling away. */}
-      <div className="relative z-10 -mt-[300vh]">
+      <div className="relative z-10" style={{ marginTop: "-300vh" }}>
         <FeaturesSplit />
         <WhyChooseUs />
         <GalleryPreview />
