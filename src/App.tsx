@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import CustomCursor from "@/components/ui/CustomCursor";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -73,6 +74,7 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <Router>
         <ScrollToTop />

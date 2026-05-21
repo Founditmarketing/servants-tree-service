@@ -3,11 +3,29 @@
 
 html, body {
   scroll-behavior: smooth;
-  cursor: url('/cursors/chainsaw.svg') 16 16, auto;
 }
 
-a, button, [role="button"], input, select, textarea, label {
-  cursor: url('/cursors/chainsaw.svg') 16 16, pointer;
+/* Hide default cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* Spinning saw blade cursor */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.15s ease;
+}
+
+.custom-cursor img {
+  animation: sawSpin 3s linear infinite;
+}
+
+@keyframes sawSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Smooth will-change hints for scroll-driven animations */
