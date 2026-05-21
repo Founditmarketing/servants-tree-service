@@ -8,23 +8,23 @@ import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <main className="relative">
-      {/* Fixed Side Gutter Content (Eye Candy) */}
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col items-center gap-12 mix-blend-difference pointer-events-none">
-        <div className="w-[1px] h-32 bg-white/20" />
-        <div className="[writing-mode:vertical-lr] text-[10px] font-black uppercase tracking-[1em] text-white/40">
-          ESTABLISHED MMVI
-        </div>
-        <div className="w-[1px] h-32 bg-white/20" />
-      </div>
-
+    <>
+      {/* Fixed hero behind everything */}
       <Hero />
-      <FeaturesSplit />
-      <WhyChooseUs />
-      <GalleryPreview />
-      <FullServicesList />
-      <TestimonialsCarousel />
-      <ContactSection />
-    </main>
+
+      {/* All scrollable content — sits above the hero */}
+      <div className="relative z-10">
+        {/* Spacer: lets the hero be visible for one full screen before doors close */}
+        <div className="h-screen" />
+
+        {/* Doors close over hero, then rest of page scrolls normally */}
+        <FeaturesSplit />
+        <WhyChooseUs />
+        <GalleryPreview />
+        <FullServicesList />
+        <TestimonialsCarousel />
+        <ContactSection />
+      </div>
+    </>
   );
 }
