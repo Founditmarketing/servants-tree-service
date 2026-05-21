@@ -71,7 +71,7 @@ export default function FullServicesList() {
     };
 
     return (
-        <section id="services" className="pt-24 pb-24 bg-slate-950 relative overflow-hidden selection:bg-accent selection:text-white">
+        <section id="services" className="pt-24 pb-24 bg-[#0A1628] relative overflow-hidden selection:bg-accent selection:text-white">
             {/* High-Fidelity Background Textures */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-noise opacity-10" />

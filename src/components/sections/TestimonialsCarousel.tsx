@@ -125,7 +125,7 @@ export default function TestimonialsCarousel() {
     : review.content;
 
   return (
-    <section id="reviews" className="pt-24 pb-24 bg-slate-50 relative overflow-hidden bg-dot-pattern">
+    <section id="reviews" className="pt-24 pb-24 bg-muted relative overflow-hidden bg-dot-pattern">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-transparent to-slate-50 pointer-events-none z-0" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">

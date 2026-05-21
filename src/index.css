@@ -23,24 +23,41 @@ html {
   --radius-3xl: 2rem;
   --radius-4xl: 3rem;
 
-  --color-primary: #346296; /* Deep Professional Blue */
-  --color-primary-foreground: #ffffff;
+  /* ── Crimson Navy Premium Palette ── */
+
+  --color-primary: #0A1628;           /* Deep Midnight Navy — authority & trust */
+  --color-primary-foreground: #F2F5F9;
   
-  --color-secondary: #4680c3; /* Clear Sky Blue */
+  --color-secondary: #3B6B9E;         /* Slate Blue — softer complement */
   --color-secondary-foreground: #ffffff;
   
-  --color-accent: #ea171c; /* Interaction Red */
+  --color-accent: #C1121F;            /* Crimson — bold action & energy */
   --color-accent-foreground: #ffffff;
   
-  --color-background: #ffffff; /* Clean White */
-  --color-foreground: #0f172a; /* Slate 900 for modern readability */
+  --color-background: #FAFBFD;        /* Warm off-white — premium feel */
+  --color-foreground: #0A1628;        /* Deep navy for text */
   
-  --color-muted: #f8fafc; /* Slate 50 */
-  --color-muted-foreground: #64748b; /* Slate 500 */
+  --color-muted: #EDF1F7;             /* Cool mist */
+  --color-muted-foreground: #5A6A82;  /* Slate 500 with blue undertone */
 
-  --color-border: #e2e8f0; /* Slate 200 */
-  --color-input: #e2e8f0;
-  --color-ring: #346296;
+  --color-border: #D8DFE9;            /* Blue-tinted border */
+  --color-input: #D8DFE9;
+  --color-ring: #3B6B9E;
+
+  --color-card: #FFFFFF;
+  --color-card-foreground: #0A1628;
+
+  --color-destructive: #991B1B;
+  --color-destructive-foreground: #ffffff;
+
+  /* Design tokens for gradients & glow */
+  --color-navy-900: #0A1628;
+  --color-navy-800: #0F2240;
+  --color-navy-700: #162D52;
+  --color-navy-600: #1E3A5F;
+  --color-crimson-600: #C1121F;
+  --color-crimson-700: #9B0F19;
+  --color-crimson-500: #DC2626;
 }
 
 @layer utilities {
@@ -86,7 +103,7 @@ html {
   }
 
   .shadow-accent-glow {
-    box-shadow: 0 10px 40px rgba(234, 23, 28, 0.15);
+    box-shadow: 0 10px 40px rgba(193, 18, 31, 0.2);
   }
 
   .inner-shadow {

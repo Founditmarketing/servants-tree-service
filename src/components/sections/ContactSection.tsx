@@ -4,7 +4,7 @@ import { ScrollReveal, ParallaxLayer, TextRevealByWord } from "@/components/ui/S
 
 export default function ContactSection() {
   return (
-    <section className="py-24 bg-[#f5fbff] relative overflow-hidden" id="contact-preview">
+    <section className="py-24 bg-muted relative overflow-hidden" id="contact-preview">
       {/* Inject self-contained keyframe styles for a seamless drift animation */}
       <style>{`
         @keyframes drift {

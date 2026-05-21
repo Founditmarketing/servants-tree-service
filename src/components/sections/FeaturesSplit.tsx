@@ -28,7 +28,7 @@ export default function FeaturesSplit() {
           style={{ x: leftX }}
           className="w-full md:w-1/2 will-change-transform"
         >
-          <div className="bg-slate-50 h-full pt-24 pb-40 md:pb-48 px-6 md:px-12 lg:px-24 flex flex-col items-center text-center group relative z-10">
+          <div className="bg-muted h-full pt-24 pb-40 md:pb-48 px-6 md:px-12 lg:px-24 flex flex-col items-center text-center group relative z-10">
             <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
             <ScrollReveal direction="none" duration={0.8}>
               <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors shadow-sm relative z-10">
