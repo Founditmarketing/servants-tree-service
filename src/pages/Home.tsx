@@ -1,12 +1,10 @@
 import Hero from "@/components/sections/Hero";
-import FullServicesList from "@/components/sections/FullServicesList";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import ContactSection from "@/components/sections/ContactSection";
-import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel";
 import FeaturesSplit from "@/components/sections/FeaturesSplit";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import GalleryPreview from "@/components/sections/GalleryPreview";
-
-import { motion } from "motion/react";
+import FullServicesList from "@/components/sections/FullServicesList";
+import TestimonialsCarousel from "@/components/sections/TestimonialsCarousel";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -21,22 +19,11 @@ export default function Home() {
       </div>
 
       <Hero />
-      
       <FeaturesSplit />
-      
-
-
       <WhyChooseUs />
-
       <GalleryPreview />
-
       <FullServicesList />
-      
       <TestimonialsCarousel />
-
-
-
-      {/* Contact Section */}
       <ContactSection />
     </main>
   );

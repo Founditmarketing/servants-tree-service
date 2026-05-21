@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Star, Quote, User, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal, TextRevealByWord, CountUp } from "@/components/ui/ScrollReveal";
 
 const reviews = [
   {
@@ -80,7 +81,7 @@ export default function TestimonialsCarousel() {
       x: "0",
       opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         x: { type: "spring", stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 },
         scale: { duration: 0.3 }
@@ -91,7 +92,7 @@ export default function TestimonialsCarousel() {
       opacity: 0,
       scale: 0.98,
       pointerEvents: "none" as any,
-      transition: { 
+      transition: {
         x: { type: "spring", stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 },
         scale: { duration: 0.3 }
@@ -124,25 +125,33 @@ export default function TestimonialsCarousel() {
     : review.content;
 
   return (
-    <section id="reviews" className="pt-24 pb-40 bg-slate-50 relative overflow-hidden bg-dot-pattern">
+    <section id="reviews" className="pt-24 pb-24 bg-slate-50 relative overflow-hidden bg-dot-pattern">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-transparent to-slate-50 pointer-events-none z-0" />
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center justify-center space-x-2 text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4">
-            <span className="w-10 h-[2px] bg-accent"></span>
-            <span>Client Success</span>
-            <span className="w-10 h-[2px] bg-accent"></span>
-          </div>
-          <h2 className="font-sans text-4xl sm:text-6xl lg:text-7xl font-black mt-4 tracking-tighter text-primary">
-            REVIEWS & <span className="text-secondary italic">FEEDBACK</span>
-          </h2>
-        </motion.div>
+        <div className="text-center mb-6">
+          <ScrollReveal direction="up" duration={0.6}>
+            <div className="inline-flex items-center justify-center space-x-2 text-primary font-bold text-xs uppercase tracking-[0.3em] mb-4">
+              <span className="w-10 h-[2px] bg-accent"></span>
+              <span>Client Success</span>
+              <span className="w-10 h-[2px] bg-accent"></span>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        <div className="text-center mb-16">
+          <TextRevealByWord
+            text="REVIEWS & FEEDBACK"
+            className="font-sans text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-primary inline-flex flex-wrap justify-center"
+          />
+        </div>
+
+        {/* Star Ratings animated on section entry */}
+        <ScrollReveal direction="up" delay={0.2} duration={0.6} className="flex justify-center gap-1.5 mb-12">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+          ))}
+        </ScrollReveal>
 
         {/* Carousel Container */}
         <div className="max-w-4xl mx-auto relative px-12 md:px-20">
@@ -252,11 +261,14 @@ export default function TestimonialsCarousel() {
         </div>
       </div>
 
-      {/* Google Rating */}
-      <div className="container mx-auto px-4 md:px-6 mt-20 relative z-10 text-center">
+      {/* Google Rating with CountUp */}
+      <ScrollReveal direction="up" delay={0.3} duration={0.6} className="container mx-auto px-4 md:px-6 mt-20 relative z-10 text-center">
         <p className="text-sm text-muted-foreground font-medium">
           <strong className="text-foreground">Google</strong> rating score:{" "}
-          <strong className="text-foreground">5.0</strong> of 5, based on{" "}
+          <strong className="text-foreground">
+            <CountUp target={5} decimals={1} duration={2} />
+          </strong>{" "}
+          of 5, based on{" "}
           <strong className="text-foreground">
             <a
               href="https://www.google.com/maps/place/?q=place_id:ChIJVSCkGwOPMIYRQ6J0AZqqFv0"
@@ -264,18 +276,11 @@ export default function TestimonialsCarousel() {
               rel="noopener noreferrer"
               className="underline hover:text-primary transition-colors"
             >
-              14 reviews
+              <CountUp target={14} duration={1.5} /> reviews
             </a>
           </strong>
         </p>
-      </div>
-
-      {/* Arrow Down Divider */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none">
-        <svg viewBox="0 0 100 10" preserveAspectRatio="none" className="block w-full h-[60px] md:h-[100px] text-white drop-shadow-sm">
-          <polygon fill="currentColor" points="0,0 50,10 100,0 100,10 0,10" />
-        </svg>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
