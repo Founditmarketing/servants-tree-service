@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { TreeDeciduous, Scissors, Truck, Construction, Search, TreePine } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -100,11 +101,46 @@ export default function FullServicesList() {
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="text-center md:text-left mb-24">
-                    <TextRevealByWord
-                        text="TECHNICAL EXCELLENCE"
-                        className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black mt-4 tracking-tighter text-white uppercase leading-[0.8] flex flex-wrap"
-                        wordClassName="text-white"
-                    />
+                    <h2 className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black mt-4 tracking-tighter text-white uppercase leading-[0.85]">
+                      {/* TECHNICAL — letter by letter from below */}
+                      <span className="block overflow-hidden">
+                        {"TECHNICAL".split("").map((letter, i) => (
+                          <motion.span
+                            key={`t-${i}`}
+                            initial={{ y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" }}
+                            whileInView={{ y: "0%", opacity: 1, scale: 1, filter: "blur(0px)" }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{
+                              delay: i * 0.04,
+                              duration: 0.7,
+                              ease: [0.16, 1, 0.3, 1],
+                            }}
+                            className="inline-block"
+                          >
+                            {letter}
+                          </motion.span>
+                        ))}
+                      </span>
+                      {/* EXCELLENCE — same animation, stagger offset, accent color */}
+                      <span className="block overflow-hidden">
+                        {"EXCELLENCE".split("").map((letter, i) => (
+                          <motion.span
+                            key={`e-${i}`}
+                            initial={{ y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" }}
+                            whileInView={{ y: "0%", opacity: 1, scale: 1, filter: "blur(0px)" }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{
+                              delay: 0.35 + i * 0.04,
+                              duration: 0.7,
+                              ease: [0.16, 1, 0.3, 1],
+                            }}
+                            className="inline-block text-accent italic"
+                          >
+                            {letter}
+                          </motion.span>
+                        ))}
+                      </span>
+                    </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
