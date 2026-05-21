@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    // Tall wrapper — hero stays sticky for 200vh of scroll, then scrolls away
-    <div className="relative z-0 h-[200vh]">
+    // 500vh runway — hero stays pinned through doors closing + 2 more sections
+    <div className="relative z-0 h-[500vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Full Screen Video Background */}
         <div className="absolute inset-0">
