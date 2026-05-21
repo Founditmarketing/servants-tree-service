@@ -1,5 +1,4 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useMotionValue, useAnimationFrame } from "motion/react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Camera, Hand } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -15,43 +14,11 @@ const previewImages = [
   "/images/Gallary/IMG_3107-400x284.jpg",
 ];
 
+// Double the images for seamless infinite loop
+const loopedImages = [...previewImages, ...previewImages];
+
 export default function GalleryPreview() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const [maxDrag, setMaxDrag] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const speedRef = useRef(-0.4); // pixels per frame
-
-  // Calculate drag bounds
-  useEffect(() => {
-    const measure = () => {
-      if (trackRef.current) {
-        const scrollW = trackRef.current.scrollWidth;
-        const containerW = trackRef.current.parentElement?.clientWidth ?? window.innerWidth;
-        setMaxDrag(Math.max(scrollW - containerW, 0));
-      }
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
-
-  // Slow auto-scroll
-  useAnimationFrame(() => {
-    if (isDragging || maxDrag === 0) return;
-    const current = x.get();
-    let next = current + speedRef.current;
-    // Bounce at edges
-    if (next < -maxDrag) {
-      next = -maxDrag;
-      speedRef.current = 0.4;
-    } else if (next > 0) {
-      next = 0;
-      speedRef.current = -0.4;
-    }
-    x.set(next);
-  });
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
     <section className="bg-white relative py-24 overflow-hidden">
@@ -80,28 +47,28 @@ export default function GalleryPreview() {
         </ScrollReveal>
       </div>
 
-      {/* Auto-scrolling gallery strip */}
-      <div className="relative overflow-hidden">
-        <motion.div
-          ref={trackRef}
-          style={{ x }}
-          drag="x"
-          dragConstraints={{ left: -maxDrag, right: 0 }}
-          dragElastic={0.1}
-          dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
-          onDragStart={() => { setIsDragging(true); setHasInteracted(true); }}
-          onDragEnd={() => setIsDragging(false)}
-          className="flex gap-5 md:gap-8 pl-[5vw] pr-[5vw] cursor-grab active:cursor-grabbing"
+      {/* Infinite auto-scrolling gallery */}
+      <div
+        className="relative"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setTimeout(() => setIsPaused(false), 2000)}
+      >
+        <div
+          className="flex gap-5 md:gap-8 gallery-scroll-track"
+          style={{ animationPlayState: isPaused ? "paused" : "running" }}
         >
-          {previewImages.map((url, i) => (
+          {loopedImages.map((url, i) => (
             <div
-              key={url}
+              key={`${url}-${i}`}
               className="w-[300px] md:w-[420px] shrink-0 relative group overflow-hidden rounded-2xl bg-slate-100 shadow-lg aspect-[4/3]"
             >
               <img
                 src={url}
-                alt={`Gallery preview ${i + 1}`}
+                alt={`Gallery preview ${(i % previewImages.length) + 1}`}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/30 transition-all duration-500" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -109,18 +76,13 @@ export default function GalleryPreview() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Swipe hint — fades out after first interaction */}
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: hasInteracted ? 0 : 1 }}
-          transition={{ duration: 0.5 }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full pointer-events-none"
-        >
+        {/* Swipe hint */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full pointer-events-none">
           <Hand className="w-4 h-4" />
           <span>Swipe to explore</span>
-        </motion.div>
+        </div>
       </div>
 
       {/* CTA */}
