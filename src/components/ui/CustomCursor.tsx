@@ -34,8 +34,8 @@ export default function CustomCursor() {
       <img
         src="/cursors/saw-blade.png"
         alt=""
-        width={28}
-        height={28}
+        width={40}
+        height={40}
         draggable={false}
       />
     </div>
