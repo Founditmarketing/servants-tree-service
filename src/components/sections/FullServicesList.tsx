@@ -100,50 +100,27 @@ export default function FullServicesList() {
             </div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="text-center md:text-left mb-24">
-                    <motion.h2
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.3 }}
-                      className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black mt-4 tracking-tighter text-white uppercase leading-[0.85]"
+                <div className="text-center md:text-left mb-24 overflow-hidden">
+                    <motion.div
+                      initial={{ scale: 2.5, opacity: 0, filter: "blur(20px)" }}
+                      whileInView={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                      viewport={{ once: true, amount: 0.1 }}
+                      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      {/* TECHNICAL */}
-                      <motion.span
-                        className="block overflow-hidden"
-                        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04 } } }}
-                      >
-                        {"TECHNICAL".split("").map((letter, i) => (
-                          <motion.span
-                            key={`t-${i}`}
-                            variants={{
-                              hidden: { y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" },
-                              visible: { y: "0%", opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-                            }}
-                            className="inline-block"
-                          >
-                            {letter}
-                          </motion.span>
-                        ))}
-                      </motion.span>
-                      {/* EXCELLENCE */}
-                      <motion.span
-                        className="block overflow-hidden"
-                        variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.35 } } }}
-                      >
-                        {"EXCELLENCE".split("").map((letter, i) => (
-                          <motion.span
-                            key={`e-${i}`}
-                            variants={{
-                              hidden: { y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" },
-                              visible: { y: "0%", opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-                            }}
-                            className="inline-block text-accent italic"
-                          >
-                            {letter}
-                          </motion.span>
-                        ))}
-                      </motion.span>
-                    </motion.h2>
+                      <h2 className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black mt-4 tracking-tighter text-white uppercase leading-[0.85]">
+                        TECHNICAL
+                      </h2>
+                    </motion.div>
+                    <motion.div
+                      initial={{ x: "100%", opacity: 0 }}
+                      whileInView={{ x: "0%", opacity: 1 }}
+                      viewport={{ once: true, amount: 0.1 }}
+                      transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <h2 className="font-sans text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-accent italic uppercase leading-[0.85]">
+                        EXCELLENCE
+                      </h2>
+                    </motion.div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
