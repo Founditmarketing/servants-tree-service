@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -21,10 +22,8 @@ function ScrollToTop() {
       const id = hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
-        // Element exists (already on page), scroll immediately
         element.scrollIntoView({ behavior: 'smooth' });
       } else {
-        // Element not found (navigating from another page), wait for 300ms exit animation to finish
         setTimeout(() => {
           const delayedElement = document.getElementById(id);
           if (delayedElement) {
@@ -69,14 +68,20 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const handleLoadingComplete = useCallback(() => setIsLoading(false), []);
+
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen" style={{ overflowX: "clip" }}>
-        <Header />
-        <AnimatedRoutes />
-        <Footer />
-      </div>
-    </Router>
+    <>
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+      <Router>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen" style={{ overflowX: "clip" }}>
+          <Header />
+          <AnimatedRoutes />
+          <Footer />
+        </div>
+      </Router>
+    </>
   );
 }
