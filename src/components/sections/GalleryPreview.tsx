@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Camera, Hand } from "lucide-react";
+import { ArrowRight, Camera } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -78,11 +78,6 @@ export default function GalleryPreview() {
           ))}
         </div>
 
-        {/* Swipe hint */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full pointer-events-none">
-          <Hand className="w-4 h-4" />
-          <span>Swipe to explore</span>
-        </div>
       </div>
 
       {/* CTA */}
