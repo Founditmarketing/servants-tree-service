@@ -72,7 +72,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen overflow-x-hidden">
+      <div className="flex flex-col min-h-screen" style={{ overflowX: "clip" }}>
         <Header />
         <AnimatedRoutes />
         <Footer />
