@@ -109,7 +109,7 @@ export default function FullServicesList() {
                             key={`t-${i}`}
                             initial={{ y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" }}
                             whileInView={{ y: "0%", opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            viewport={{ once: true, margin: "-50px" }}
+                            viewport={{ once: true, amount: 0.8, margin: "-200px" }}
                             transition={{
                               delay: i * 0.04,
                               duration: 0.7,
@@ -128,7 +128,7 @@ export default function FullServicesList() {
                             key={`e-${i}`}
                             initial={{ y: "120%", opacity: 0, scale: 0.8, filter: "blur(8px)" }}
                             whileInView={{ y: "0%", opacity: 1, scale: 1, filter: "blur(0px)" }}
-                            viewport={{ once: true, margin: "-50px" }}
+                            viewport={{ once: true, amount: 0.8, margin: "-200px" }}
                             transition={{
                               delay: 0.35 + i * 0.04,
                               duration: 0.7,
